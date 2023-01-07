@@ -3,6 +3,7 @@ package com.nle.tutorbackend.courseservices.controller;
 import com.nle.tutorbackend.courseservices.dto.CourseRequest;
 import com.nle.tutorbackend.courseservices.dto.CourseResponse;
 import com.nle.tutorbackend.courseservices.service.CourseService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class CourseController {
     }
 
     @PostMapping(path = "/createCourse")
-    public CourseResponse createCourse(@RequestBody CourseRequest request) {
+    public CourseResponse createCourse(@Valid @RequestBody CourseRequest request) {
         return CourseResponse.fromModel(service.save(request.toModel()));
     }
 }
